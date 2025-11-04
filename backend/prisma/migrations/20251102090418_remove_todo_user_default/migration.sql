@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "TodoList" ALTER COLUMN "userId" DROP DEFAULT;
