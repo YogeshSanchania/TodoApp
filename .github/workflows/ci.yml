@@ -31,6 +31,10 @@ jobs:
               with:
                 node-version: 25
             
+            - name: Prisma generate
+              working-directory: backend
+              run: npx Prisma generate
+              
             ## install and build backend
             - name: Install backend
               working-directory: backend
