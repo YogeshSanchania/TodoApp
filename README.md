@@ -25,6 +25,10 @@ Instructions coming soon...
 2. Create a feature branch
 3. Submit a pull request
 
+## Stay in touch
+- Author - [Yogesh](https://www.linkedin.com/in/yogesh-sanchania)
+
+
 ## License
 
 This project is licensed under the MIT License.
