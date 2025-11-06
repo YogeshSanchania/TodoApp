@@ -41,8 +41,7 @@ export class UserController {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
             sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
-            maxAge: 24 * 60 * 60 * 1000,
-            domain: '.render.com'
+            maxAge: 24 * 60 * 60 * 1000
         });
 
         return { access_token, user };

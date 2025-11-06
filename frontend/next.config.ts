@@ -7,10 +7,12 @@ const nextConfig: NextConfig = {
   },
 
   async rewrites() {
+    let baseUrl = process.env.NODE_ENV === 'development' ? process.env.NESTJS_API_URL_LOCAL : process.env.NESTJS_API_URL_PROD
+    console.log(`baseUrl in rewrite: ${baseUrl}`);
     return [
       {
         source: "/api/:path*",
-        destination: `${process.env.NESTJS_API_URL_PROD}/:path*`
+        destination: `${baseUrl}/:path*`
       }
     ]
   },
