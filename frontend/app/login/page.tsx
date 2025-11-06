@@ -39,7 +39,6 @@ export default function LoginPage() {
         if (!validateForm()) return;
         try {
             const data = await loginUser({ email: username, password });
-            console.log(`access_token after login: ${data.access_token}`);
             setLoginError('');
             router.refresh();
             router.push('/');
@@ -76,10 +75,10 @@ export default function LoginPage() {
                         }
                     </label>
                     <div className="mb-6">
-                        <label className="block text-sm font-semibold mb-2">Username</label>
+                        <label className="block text-sm font-semibold mb-2 dark:text-black">Username</label>
                         <input
                             type="text"
-                            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:text-gray-700" 
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                             placeholder="Enter your username"
@@ -91,10 +90,10 @@ export default function LoginPage() {
                         </label>
                     </div>
                     <div className="mb-6">
-                        <label className="block text-sm font-semibold mb-2">Password</label>
+                        <label className="block text-sm font-semibold mb-2 dark:text-black">Password</label>
                         <input
                             type="password"
-                            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:text-gray-700"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             placeholder="Enter your password"

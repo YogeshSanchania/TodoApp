@@ -51,7 +51,12 @@ export class UserController {
 
     @Post('logout')
     logout(@Res({ passthrough: true }) res: express.Response) {
-        res.clearCookie('token');
+        res.cookie('token','',{
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+            expires: new Date(0)
+        })
         return { message: 'Logged out' };
     }
 }

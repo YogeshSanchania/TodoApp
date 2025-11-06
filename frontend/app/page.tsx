@@ -11,8 +11,6 @@ export default async function HomePage({ searchParams }: any) {
 
     const cookie = await cookies();
     const token = cookie?.get('token')?.value || '';
-
-    console.log(`token at homepage: ${token}`);
     const user = await checkToken(token);
 
     if (!user) {
