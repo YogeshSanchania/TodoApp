@@ -117,7 +117,7 @@ export default function TodoList({ todos, status }: TodoListProps) {
     return (
         <>
             {loading && (
-                <div className="fixed inset-0 bg-gray-500 flex items-center justify-center z-50">
+                <div className="fixed inset-0 bg-gray-300 opacity-5 flex items-center justify-center z-50">
                     <div className="loader"></div>
                 </div>
             )}
