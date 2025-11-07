@@ -5,9 +5,9 @@ import { useRouter } from "next/navigation";
 export function NavBar({ user }: any) {
 
     const router = useRouter();
-    const handleLogout = async () => {
+    const handleLogout = async (e:any) => {
+        e.target.text = 'Logging out';
         await logout();
-
         router.refresh();
         window.location.href = "/login";
     }

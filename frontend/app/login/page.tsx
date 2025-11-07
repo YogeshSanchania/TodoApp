@@ -8,6 +8,7 @@ export default function LoginPage() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [loginError, setLoginError] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const router = useRouter();
 
@@ -36,6 +37,7 @@ export default function LoginPage() {
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
+        setIsSubmitting(true);
         if (!validateForm()) return;
         try {
             const data = await loginUser({ email: username, password });
@@ -45,6 +47,8 @@ export default function LoginPage() {
         }
         catch (error: any) {
             setLoginError(error.message || 'Something went wrong');
+        } finally {
+            setIsSubmitting(false);
         }
     }
 
@@ -78,7 +82,7 @@ export default function LoginPage() {
                         <label className="block text-sm font-semibold mb-2 dark:text-black">Username</label>
                         <input
                             type="text"
-                            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:text-gray-700" 
+                            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:text-gray-700"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                             placeholder="Enter your username"
@@ -106,9 +110,11 @@ export default function LoginPage() {
                     </div>
                     <button
                         type="submit"
-                        className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors duration-300 font-semibold"
+                        className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors duration-300 font-semibold disabled:bg-blue-100"
+                        disabled={isSubmitting}
                     >
-                        Sign In
+                        {isSubmitting ?
+                            "Signing In..." : "Sign In"}
                     </button>
                 </form>
             </div>

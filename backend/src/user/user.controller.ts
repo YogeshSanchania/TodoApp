@@ -51,7 +51,8 @@ export class UserController {
 
     @Post('logout')
     logout(@Res({ passthrough: true }) res: express.Response) {
-        res.cookie('token','',{
+        res.setHeader('Cache-Control', 'no-store');
+        res.cookie('token', '', {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
             sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',

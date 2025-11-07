@@ -137,5 +137,4 @@ export async function logout() {
         method: 'POST',
         credentials: 'include'
     });
-
 }
